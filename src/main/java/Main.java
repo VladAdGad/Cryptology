@@ -12,11 +12,11 @@ public class Main {
     final int quantity = 100;
     int count = quantity;
 
-    System.out.println(Cryptology.decrypt(key, initVector, Cryptology.encrypt(key, initVector, "AION")));
+    System.out.println(AES.decrypt(key, initVector, AES.encrypt(key, initVector, "AION")));
 
     start = System.currentTimeMillis();
     while (count-- > 0) {
-      Cryptology.encrypt(key, initVector, textToEncrypt);
+      AES.encrypt(key, initVector, textToEncrypt);
     }
     end = System.currentTimeMillis();
 
@@ -24,11 +24,11 @@ public class Main {
 
 
     count = quantity;
-    String encrypted = Cryptology.encrypt(key, initVector, textToEncrypt);
+    String encrypted = AES.encrypt(key, initVector, textToEncrypt);
 
     start = System.currentTimeMillis();
     while (count-- > 0) {
-      Cryptology.decrypt(key, initVector, encrypted);
+      AES.decrypt(key, initVector, encrypted);
     }
     end = System.currentTimeMillis();
 

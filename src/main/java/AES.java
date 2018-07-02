@@ -1,3 +1,5 @@
+import enums.BlockCipher;
+import enums.Padding;
 import java.security.NoSuchAlgorithmException;
 import javax.crypto.Cipher;
 import javax.crypto.NoSuchPaddingException;
@@ -5,22 +7,13 @@ import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
 import org.apache.commons.codec.binary.Base64;
 
-enum BlockCipher {
-  CBC, ECB, PCBC, CFB, OFB, CTR
-}
-
-enum Padding {
-  PKCS5PADDING, PKCS7PADDING, NOPADDING
-}
-
-class Cryptology {
+class AES {
   private static String algorithm = "AES";
-
   private static Cipher cipher;
 
   static {
     try {
-      cipher = Cipher.getInstance(String.format("%s/%s/%s", "AES", BlockCipher.ECB, Padding.PKCS5PADDING));
+      cipher = Cipher.getInstance(String.format("%s/%s/%s", algorithm, BlockCipher.CBC, Padding.PKCS5PADDING));
     } catch (NoSuchAlgorithmException | NoSuchPaddingException e) {
       e.printStackTrace();
     }
