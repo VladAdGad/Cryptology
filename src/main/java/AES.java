@@ -1,5 +1,6 @@
 import enums.BlockCipher;
 import enums.Padding;
+import java.nio.charset.StandardCharsets;
 import java.security.NoSuchAlgorithmException;
 import javax.crypto.Cipher;
 import javax.crypto.NoSuchPaddingException;
@@ -21,8 +22,8 @@ class AES {
 
   static String encrypt(String key, String initVector, String value) {
     try {
-      IvParameterSpec iv = new IvParameterSpec(initVector.getBytes("UTF-8"));
-      SecretKeySpec skeySpec = new SecretKeySpec(key.getBytes("UTF-8"), "AES");
+      IvParameterSpec iv = new IvParameterSpec(initVector.getBytes(StandardCharsets.UTF_8));
+      SecretKeySpec skeySpec = new SecretKeySpec(key.getBytes(StandardCharsets.UTF_8), algorithm);
 
 //      cipher.init(Cipher.ENCRYPT_MODE, skeySpec);
       cipher.init(Cipher.ENCRYPT_MODE, skeySpec, iv);
@@ -39,8 +40,8 @@ class AES {
 
   static String decrypt(String key, String initVector, String encrypted) {
     try {
-      IvParameterSpec iv = new IvParameterSpec(initVector.getBytes("UTF-8"));
-      SecretKeySpec skeySpec = new SecretKeySpec(key.getBytes("UTF-8"), "AES");
+      IvParameterSpec iv = new IvParameterSpec(initVector.getBytes(StandardCharsets.UTF_8));
+      SecretKeySpec skeySpec = new SecretKeySpec(key.getBytes(StandardCharsets.UTF_8), algorithm);
 
 //      cipher.init(Cipher.DECRYPT_MODE, skeySpec);
       cipher.init(Cipher.DECRYPT_MODE, skeySpec, iv);
