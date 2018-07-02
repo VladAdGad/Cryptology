@@ -42,11 +42,11 @@ public class Main {
 
 
     /*BLOWFISH*/
-    System.out.println(BlowFish.decrypt(key, initVector8, BlowFish.encrypt(key, initVector8, "AION")));
+    System.out.println(BlowFish.decrypt(key, BlowFish.encrypt(key, "AION")));
 
     start = System.currentTimeMillis();
     while (count-- > 0) {
-      BlowFish.encrypt(key, initVector8, textToEncrypt);
+      BlowFish.encrypt(key, textToEncrypt);
     }
     end = System.currentTimeMillis();
 
@@ -54,11 +54,11 @@ public class Main {
 
 
     count = quantity;
-    String encrypted = BlowFish.encrypt(key, initVector8, textToEncrypt);
+    String encrypted = BlowFish.encrypt(key, textToEncrypt);
 
     start = System.currentTimeMillis();
     while (count-- > 0) {
-      BlowFish.decrypt(key, initVector8, encrypted);
+      BlowFish.decrypt(key, encrypted);
     }
     end = System.currentTimeMillis();
 
