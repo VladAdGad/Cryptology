@@ -9,10 +9,10 @@ public class Main {
 
     String textToEncrypt = File.readFile("/home/vlad/IdeaProjects/Cryptology/src/main/resources/file.txt", Charset.defaultCharset());
     double start, end;
-    final int quantity = 1;
+    final int quantity = 100;
     int count = quantity;
 
-    System.out.println(Cryptology.decrypt(key, initVector, textToEncrypt));
+    System.out.println(Cryptology.decrypt(key, initVector, Cryptology.encrypt(key, initVector, "AION")));
 
     start = System.currentTimeMillis();
     while (count-- > 0) {
