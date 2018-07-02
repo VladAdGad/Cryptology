@@ -42,9 +42,8 @@ public class BlowFish {
   }
 
   public static String encrypt(String key, String Data)throws Exception{
-
     SecretKeySpec skeyKey = new SecretKeySpec(key.getBytes(StandardCharsets.UTF_8), algorithm);
-    Cipher cipher = Cipher.getInstance("Blowfish");
+    Cipher cipher = Cipher.getInstance(algorithm);
     cipher.init(Cipher.ENCRYPT_MODE, skeyKey);
 
     return base64.encodeToString(cipher.doFinal(Data.getBytes(StandardCharsets.UTF_8)));

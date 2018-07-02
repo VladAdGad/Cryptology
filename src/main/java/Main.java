@@ -11,13 +11,13 @@ public class Main {
     String initVector16 = "RandomInitVector"; // 16 bytes IV
     SecureRandom random = new SecureRandom();
     byte[] initVector8 = random.generateSeed(8);
-//    String initVector8 = iv.toString(); // 8 bytes IV
 
-    String textToEncrypt = File.readFile("/home/vlad/IdeaProjects/Cryptology/src/main/resources/file.txt", Charset.defaultCharset());
-    double start, end;
-    final int quantity = 100;
-    int count = quantity;
-
+    /*AES*/
+//    String textToEncrypt = File.readFile("/home/vlad/IdeaProjects/Cryptology/src/main/resources/file.txt", Charset.defaultCharset());
+//    double start, end;
+//    final int quantity = 100;
+//    int count = quantity;
+//
 //    System.out.println(AES.decrypt(key, initVector16, AES.encrypt(key, initVector16, "AION")));
 //
 //    start = System.currentTimeMillis();
@@ -42,29 +42,27 @@ public class Main {
 
 
     /*BLOWFISH*/
-    System.out.println(BlowFish.decrypt(key, BlowFish.encrypt(key, "AION")));
-
-    start = System.currentTimeMillis();
-    while (count-- > 0) {
-      BlowFish.encrypt(key, textToEncrypt);
-    }
-    end = System.currentTimeMillis();
-
-    System.out.println("Average of encrypt: " + (end - start) / quantity);
-
-
-    count = quantity;
-    String encrypted = BlowFish.encrypt(key, textToEncrypt);
-
-    start = System.currentTimeMillis();
-    while (count-- > 0) {
-      BlowFish.decrypt(key, encrypted);
-    }
-    end = System.currentTimeMillis();
-
-    System.out.println("Average of decrypt: " + (end - start) / quantity);
-
-
+//    System.out.println(BlowFish.decrypt(key, BlowFish.encrypt(key, "AION")));
+//
+//    start = System.currentTimeMillis();
+//    while (count-- > 0) {
+//      BlowFish.encrypt(key, textToEncrypt);
+//    }
+//    end = System.currentTimeMillis();
+//
+//    System.out.println("Average of encrypt: " + (end - start) / quantity);
+//
+//
+//    count = quantity;
+//    String encrypted = BlowFish.encrypt(key, textToEncrypt);
+//
+//    start = System.currentTimeMillis();
+//    while (count-- > 0) {
+//      BlowFish.decrypt(key, encrypted);
+//    }
+//    end = System.currentTimeMillis();
+//
+//    System.out.println("Average of decrypt: " + (end - start) / quantity);
   }
 
 }
