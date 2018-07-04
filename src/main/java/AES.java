@@ -20,17 +20,12 @@ class AES {
     }
   }
 
-  static String encrypt(String key, String initVector, String value) {
+  static byte[] encrypt(IvParameterSpec iv, SecretKeySpec skeySpec, byte[] value) {
     try {
-      IvParameterSpec iv = new IvParameterSpec(initVector.getBytes(StandardCharsets.UTF_8));
-      SecretKeySpec skeySpec = new SecretKeySpec(key.getBytes(StandardCharsets.UTF_8), algorithm);
-
 //      cipher.init(Cipher.ENCRYPT_MODE, skeySpec);
       cipher.init(Cipher.ENCRYPT_MODE, skeySpec, iv);
 
-      byte[] encrypted = cipher.doFinal(value.getBytes());
-
-      return Base64.encodeBase64String(encrypted);
+      return cipher.doFinal(value);
     } catch (Exception ex) {
       ex.printStackTrace();
     }
@@ -38,17 +33,12 @@ class AES {
     return null;
   }
 
-  static String decrypt(String key, String initVector, String encrypted) {
+  static byte[] decrypt(IvParameterSpec iv, SecretKeySpec skeySpec, byte[] value) {
     try {
-      IvParameterSpec iv = new IvParameterSpec(initVector.getBytes(StandardCharsets.UTF_8));
-      SecretKeySpec skeySpec = new SecretKeySpec(key.getBytes(StandardCharsets.UTF_8), algorithm);
-
 //      cipher.init(Cipher.DECRYPT_MODE, skeySpec);
       cipher.init(Cipher.DECRYPT_MODE, skeySpec, iv);
 
-      byte[] original = cipher.doFinal(Base64.decodeBase64(encrypted));
-
-      return new String(original);
+      return cipher.doFinal(value);
     } catch (Exception ex) {
       ex.printStackTrace();
     }
