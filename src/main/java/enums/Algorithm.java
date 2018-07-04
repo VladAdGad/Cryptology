@@ -1,5 +1,5 @@
 package enums;
 
 public enum Algorithm {
-  AES, BLOWFISH
+  AES, TWOFISH
 }

@@ -9,8 +9,8 @@ import javax.crypto.spec.SecretKeySpec;
 import org.apache.commons.codec.binary.Base64;
 
 
-public class BlowFish {
-  private static String algorithm = "BlowFish";
+public class TwoFish {
+  private static String algorithm = "TwoFish";
   private static Base64 base64 = new Base64(true);
 
   private static Cipher cipher;
