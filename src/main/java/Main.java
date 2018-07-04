@@ -24,8 +24,8 @@ public class Main {
 
   public static void main(String[] args) throws IllegalBlockSizeException, InvalidKeyException, InvalidAlgorithmParameterException, BadPaddingException {
     /*AES*/
-    double startEncrypt, endEncrypt;
-    double startDecrypt, endDecrypt;
+    long startEncrypt, endEncrypt;
+    long startDecrypt, endDecrypt;
 
     AES.encrypt(iv, skeySpec, value); // warmup phase
 
