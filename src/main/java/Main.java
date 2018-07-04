@@ -23,7 +23,7 @@ public class Main {
     double startEncrypt, endEncrypt;
     double startDecrypt, endDecrypt;
 
-    AES.decrypt(iv, skeySpec, AES.encrypt(iv, skeySpec, value)); // warmup phase
+    AES.encrypt(iv, skeySpec, value); // warmup phase
 
     startEncrypt = System.nanoTime();
     while (count-- > 0) {
