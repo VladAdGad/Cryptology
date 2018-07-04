@@ -1,4 +1,3 @@
-import enums.Algorithm;
 import enums.BlockCipher;
 import enums.Padding;
 import java.security.InvalidAlgorithmParameterException;
@@ -14,8 +13,8 @@ import javax.crypto.spec.SecretKeySpec;
 class AlgorithmProcess {
   private static Cipher cipher;
 
-  static void changeCipher(Algorithm algorithm, BlockCipher blockCipher) throws NoSuchPaddingException, NoSuchAlgorithmException {
-    cipher = Cipher.getInstance(String.format("%s/%s/%s", algorithm, blockCipher, Padding.PKCS5PADDING));
+  static void changeCipher(String algorithm, BlockCipher blockCipher, Padding padding) throws NoSuchPaddingException, NoSuchAlgorithmException {
+    cipher = Cipher.getInstance(String.format("%s/%s/%s", algorithm, blockCipher, padding));
   }
 
   static void encrypt(IvParameterSpec iv, SecretKeySpec skeySpec, byte[] value) throws BadPaddingException, IllegalBlockSizeException, InvalidAlgorithmParameterException, InvalidKeyException {
