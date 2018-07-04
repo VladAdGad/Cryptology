@@ -1,6 +1,10 @@
 import enums.Algorithm;
 import java.nio.charset.StandardCharsets;
+import java.security.InvalidAlgorithmParameterException;
+import java.security.InvalidKeyException;
 import java.security.SecureRandom;
+import javax.crypto.BadPaddingException;
+import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
 
@@ -18,7 +22,7 @@ public class Main {
   private final static int quantity = 100;
   private static int count = quantity;
 
-  public static void main(String[] args) {
+  public static void main(String[] args) throws IllegalBlockSizeException, InvalidKeyException, InvalidAlgorithmParameterException, BadPaddingException {
     /*AES*/
     double startEncrypt, endEncrypt;
     double startDecrypt, endDecrypt;
@@ -33,8 +37,8 @@ public class Main {
 
 
     count = quantity;
-    byte[] encrypted = AES.encrypt(iv, skeySpec, value);
-    AES.decrypt(iv, skeySpec, AES.encrypt(iv, skeySpec, encrypted)); // warmup phase
+    byte[] encrypted = AES.getEncrypt(iv, skeySpec, value);
+    AES.decrypt(iv, skeySpec, encrypted); // warmup phase
 
     startDecrypt = System.nanoTime();
     while (count-- > 0) {
